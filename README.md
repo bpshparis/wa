@@ -205,5 +205,13 @@ Seoul: https://api.kr-seo.assistant.watson.cloud.ibm.com
 
 
 
+https://github.com/bpshparis/bt
 
+
+
+https://cloud.ibm.com/login
+
+
+
+https://github.com/IBM-Cloud/watson-conversation-variables
 

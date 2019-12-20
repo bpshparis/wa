@@ -1,0 +1,771 @@
+{
+  "intents": [
+    {
+      "intent": "rdv",
+      "examples": [
+        {
+          "text": "je voudrai prendre un rdv"
+        },
+        {
+          "text": "je veux un rendez vous"
+        },
+        {
+          "text": "je veux vous rencontrer"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "sys-date",
+      "values": []
+    },
+    {
+      "entity": "sys-time",
+      "values": []
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "webhooks": [
+    {
+      "url": "http://638b20ec.ngrok.io/app/gh",
+      "name": "main_webhook",
+      "headers": []
+    }
+  ],
+  "dialog_nodes": [
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Quelle heure ?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_1_1573228692763",
+      "conditions": "!$heure",
+      "dialog_node": "response_7_1573228880381",
+      "previous_sibling": "response_4_1573228856808"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Quel jour ?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_1_1573228692763",
+      "conditions": "!$jour",
+      "dialog_node": "response_4_1573228856808"
+    },
+    {
+      "type": "response_condition",
+      "parent": "node_9_1573215785743",
+      "conditions": "anything_else",
+      "dialog_node": "response_10_1576677309983",
+      "previous_sibling": "response_3_1573216235173"
+    },
+    {
+      "type": "slot",
+      "title": "slot_10_1573215970603",
+      "output": {},
+      "parent": "node_9_1573215785743",
+      "variable": "$jour",
+      "dialog_node": "slot_10_1573215970603",
+      "previous_sibling": "response_10_1576677309983"
+    },
+    {
+      "type": "response_condition",
+      "title": "response_3_1573216235173",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "OK j'ai un RDV <? $jour.reformatDateTime('E dd MMM') ?> à <? $heure.reformatDateTime('HH') ?>h."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_9_1573215785743",
+      "context": {},
+      "conditions": "$jour and $heure",
+      "dialog_node": "response_3_1573216235173",
+      "previous_sibling": "handler_1_1573216302807"
+    },
+    {
+      "type": "slot",
+      "title": "slot_3_1573215918713",
+      "output": {},
+      "parent": "node_9_1573215785743",
+      "variable": "$heure",
+      "dialog_node": "slot_3_1573215918713",
+      "previous_sibling": "slot_10_1573215970603"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Donnez moi le jour et l'heure"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_9_1573215785743",
+      "event_name": "focus",
+      "dialog_node": "handler_1_1573216302807"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "J'ai bien compris que vous souhaitez un RDV mais je ne peux pas donner suite. Veuillez nous contacter par téléphone au +33 123456789"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1573228132372",
+      "conditions": "anything_else",
+      "dialog_node": "response_4_1573231461228",
+      "previous_sibling": "response_6_1573231437526"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "OK j'ai un rdv pour $jour à $heure"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1573228132372",
+      "conditions": "$jour != \"indefini\" and $heure != \"indefini\"",
+      "dialog_node": "response_6_1573231437526"
+    },
+    {
+      "type": "event_handler",
+      "title": "handler_8_1573215970610",
+      "output": {
+        "text": {
+          "values": [
+            "Quel jour ?"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_10_1573215970603",
+      "event_name": "focus",
+      "dialog_node": "handler_8_1573215970610",
+      "previous_sibling": "handler_2_1573215970610"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "<? $jour.reformatDateTime('E dd MMM') ?>, c'est noté (essai n° $count)"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_10_1573215970603",
+      "context": {
+        "count": "<? context.count = 0 ?>"
+      },
+      "event_name": "filled",
+      "dialog_node": "handler_8_1573303958241",
+      "previous_sibling": "handler_1_1573305163107"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Quel jour ? (essai n° $count)"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_10_1573215970603",
+      "context": {
+        "count": "<? context.count + 1 ?>"
+      },
+      "conditions": "true",
+      "event_name": "nomatch",
+      "dialog_node": "handler_10_1573303474858",
+      "previous_sibling": "handler_8_1573303958241"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "generic": [
+          {
+            "title": "Choissisez un jour:",
+            "options": [
+              {
+                "label": "mardi",
+                "value": {
+                  "input": {
+                    "text": "<? 'mardi'.reformatDateTime() ?>"
+                  }
+                }
+              },
+              {
+                "label": "jeudi",
+                "value": {
+                  "input": {
+                    "text": "<? 'jeudi'.reformatDateTime() ?>"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "slot_10_1573215970603",
+      "conditions": "$count > 1",
+      "event_name": "nomatch",
+      "dialog_node": "handler_1_1573305163107",
+      "previous_sibling": "handler_8_1573215970610"
+    },
+    {
+      "type": "event_handler",
+      "title": "handler_2_1573215970610",
+      "output": {},
+      "parent": "slot_10_1573215970603",
+      "context": {
+        "jour": "@sys-date"
+      },
+      "conditions": "@sys-date",
+      "event_name": "input",
+      "dialog_node": "handler_2_1573215970610"
+    },
+    {
+      "type": "standard",
+      "parent": "node_6_1573214372472",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_10_1573228132372"
+      },
+      "conditions": "anything_else",
+      "dialog_node": "node_10_1573297565651",
+      "previous_sibling": "node_1_1573228692763"
+    },
+    {
+      "type": "standard",
+      "parent": "node_6_1573214372472",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_7_1573214865914"
+      },
+      "conditions": "true",
+      "dialog_node": "node_10_1573231126623",
+      "previous_sibling": "node_10_1573228132372"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": []
+      },
+      "parent": "node_6_1573214372472",
+      "context": {
+        "heure": "@sys-time"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_1_1573228692763"
+      },
+      "conditions": "@sys-time",
+      "dialog_node": "node_4_1573215262347",
+      "previous_sibling": "node_7_1573214865914"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": []
+      },
+      "parent": "node_6_1573214372472",
+      "context": {
+        "jour": "@sys-date"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_4_1573215262347"
+      },
+      "conditions": "@sys-date",
+      "dialog_node": "node_7_1573214865914",
+      "previous_sibling": "node_10_1573231126623"
+    },
+    {
+      "type": "standard",
+      "parent": "node_6_1573214372472",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "user_input",
+        "dialog_node": "node_10_1573228132372"
+      },
+      "conditions": "!$jour || !$heure",
+      "dialog_node": "node_1_1573228692763",
+      "previous_sibling": "node_4_1573215262347"
+    },
+    {
+      "type": "standard",
+      "parent": "node_6_1573214372472",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "user_input",
+        "dialog_node": "Tout le reste"
+      },
+      "conditions": "$jour && $heure",
+      "dialog_node": "node_10_1573228132372"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Quelle heure ? (essai n° $count)"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_3_1573215918713",
+      "context": {
+        "count": "<? context.count + 1 ?>"
+      },
+      "event_name": "nomatch",
+      "dialog_node": "handler_2_1573304257288",
+      "previous_sibling": "handler_6_1573304775753"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "generic": [
+          {
+            "title": "Choisissez une heure:",
+            "options": [
+              {
+                "label": "10h",
+                "value": {
+                  "input": {
+                    "text": "<? '10:00:00'.reformatDateTime() ?>"
+                  }
+                }
+              },
+              {
+                "label": "14h ",
+                "value": {
+                  "input": {
+                    "text": "<? '14:00:00'.reformatDateTime() ?>"
+                  }
+                }
+              },
+              {
+                "label": "16h",
+                "value": {
+                  "input": {
+                    "text": "<? '16:00:00'.reformatDateTime() ?>"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "slot_3_1573215918713",
+      "conditions": "$count > 1",
+      "event_name": "nomatch",
+      "dialog_node": "handler_8_1573306937439",
+      "previous_sibling": "handler_8_1573215918737"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "<? $heure.reformatDateTime('HH') ?>h, c'est noté (essai n° $count)"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_3_1573215918713",
+      "context": {
+        "count": "<? context.count = 0 ?>"
+      },
+      "event_name": "filled",
+      "dialog_node": "handler_6_1573304775753",
+      "previous_sibling": "handler_8_1573306937439"
+    },
+    {
+      "type": "event_handler",
+      "title": "handler_8_1573215918737",
+      "output": {
+        "text": {
+          "values": [
+            "Quelle heure ?"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_3_1573215918713",
+      "event_name": "focus",
+      "dialog_node": "handler_8_1573215918737",
+      "previous_sibling": "handler_7_1573215918737"
+    },
+    {
+      "type": "event_handler",
+      "title": "handler_7_1573215918737",
+      "output": {},
+      "parent": "slot_3_1573215918713",
+      "context": {
+        "heure": "@sys-time"
+      },
+      "conditions": "@sys-time",
+      "event_name": "input",
+      "dialog_node": "handler_7_1573215918737"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "seuil de 3 essai dépassé"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1573231126623",
+      "context": {
+        "jour": "indefini",
+        "heure": "indefini"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_10_1573228132372"
+      },
+      "conditions": "anything_else",
+      "dialog_node": "response_5_1573295754853",
+      "previous_sibling": "response_5_1573231245432"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1573231126623",
+      "context": {
+        "counter": 0
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_4_1573215262347"
+      },
+      "conditions": "@sys-time",
+      "dialog_node": "response_10_1573295088866",
+      "previous_sibling": "response_1_1573231181384"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "essai n° $count"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1573231126623",
+      "context": {
+        "count": "<? context.count + 1 ?>"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_7_1573214865914"
+      },
+      "conditions": "$count < 3",
+      "dialog_node": "response_5_1573231245432",
+      "previous_sibling": "response_10_1573295088866"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1573231126623",
+      "context": {
+        "count": 0
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_7_1573214865914"
+      },
+      "conditions": "@sys-date",
+      "dialog_node": "response_1_1573231181384"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Nous recevons les <? $horaires.DATAS.joinToArray(\"%e.jour%\").join(' et ') ?>. <? context.horaires.DATAS ?>"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1573303310528",
+      "conditions": "$horaires.DATAS.size() > 1",
+      "dialog_node": "response_6_1576691881772",
+      "previous_sibling": "response_7_1576676791674"
+    },
+    {
+      "type": "response_condition",
+      "parent": "node_2_1573303310528",
+      "conditions": "anything_else",
+      "dialog_node": "response_5_1576676793167",
+      "previous_sibling": "response_6_1576691881772"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Nous recevons le <? $horaires.DATAS[0].jour ?> à <? $horaires.DATAS[0].heures.join(' et ') ?>."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1573303310528",
+      "context": {
+        "count": 0
+      },
+      "conditions": "$horaires.DATAS.size() == 1",
+      "dialog_node": "response_7_1576676791674"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": []
+      },
+      "context": {
+        "jour": null,
+        "count": 0,
+        "heure": null
+      },
+      "next_step": {
+        "behavior": "skip_user_input"
+      },
+      "conditions": "#rdv",
+      "dialog_node": "node_6_1573214372472",
+      "previous_sibling": "node_9_1573215785743"
+    },
+    {
+      "type": "standard",
+      "title": "Tout le reste",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Je n'ai pas compris. Vous pouvez essayer de reformuler."
+              },
+              {
+                "text": "Pouvez-vous dire cela autrement ? Je ne comprends pas."
+              },
+              {
+                "text": "Je n'ai pas compris ce que vous voulez dire."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Tout le reste",
+      "previous_sibling": "node_6_1573214372472"
+    },
+    {
+      "type": "frame",
+      "title": " ",
+      "metadata": {
+        "callout": {
+          "name": "main_webhook",
+          "type": "webhook",
+          "parameters": {
+            "": ""
+          },
+          "result_variable": "webhook_result_2"
+        },
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "#rdv",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_9_1573215785743",
+      "previous_sibling": "node_2_1573303310528"
+    },
+    {
+      "type": "standard",
+      "title": "compteur rdv",
+      "actions": [
+        {
+          "name": "main_webhook",
+          "type": "webhook",
+          "parameters": {
+            "": ""
+          },
+          "result_variable": "horaires"
+        }
+      ],
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_9_1573215785743"
+      },
+      "conditions": "true",
+      "dialog_node": "node_2_1573303310528",
+      "previous_sibling": "Bienvenue"
+    },
+    {
+      "type": "standard",
+      "title": "Bienvenue",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Bonjour, comment puis-je vous aider ?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Bienvenue"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "tooling": {
+      "store_generic_responses": true
+    },
+    "disambiguation": {
+      "prompt": "Vouliez-vous dire:",
+      "none_of_the_above_prompt": "Aucune de précédent"
+    },
+    "human_agent_assist": {
+      "prompt": "Vouliez-vous dire:"
+    }
+  },
+  "learning_opt_out": false,
+  "name": "skill1",
+  "language": "fr",
+  "description": ""
+}
