@@ -1,0 +1,6 @@
+curl -u 'apikey:'$APIKEY https://gateway.watsonplatform.net/assistant/api/v1/workspaces?version=2018-09-20 | jq -r .workspaces[0].workspace_id
+
+jq -n --arg value "$TEXT" '{"input":{"text": $value}}' | tee input.json
+
+
+curl --cookie cookies.txt --cookie-jar cookies.txt -X POST -u 'apikey:'$APIKEY -H 'Content-Type:application/json' -d @input.json 'https://gateway.watsonplatform.net/assistant/api/v1/workspaces/'$WKS'/message?version=2018-09-20' | jq -r '{text: .output.text[0], context: .context}'

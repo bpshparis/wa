@@ -1,0 +1,11 @@
+applications:
+- host: ccadalogger
+  disk: 256M
+  name: ccadalogger
+  path: ./WebContent
+  domain: hak.eu-de.mybluemix.net
+  mem: 256M
+  instances: 1
+  services:
+  - db0
+  - hak0
