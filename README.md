@@ -1,3 +1,5 @@
+<!--
+
 # How to deploy and execute Hear&Know C-Cada Logger
 
 :information_source: To keep your environment clean we will complete installation in a container
@@ -97,7 +99,7 @@ stwlp
 
 :checkered_flag: Browse  [app](http://localhost/app)
 
-
+-->
 
 ## Assistant
 
@@ -115,7 +117,7 @@ Seoul: https://api.kr-seo.assistant.watson.cloud.ibm.com
 ### Set URL aka ENDPOINT, API_KEY and VERSION
 
 	URL="https://api.eu-de.assistant.watson.cloud.ibm.com"
-	API_KEY="DVeTU-kw-nuSPkFH_p0J790aqgeyExqLFEqeuGA81TVB"
+	API_KEY="..."
 	VERSION="2019-02-28"
 
 ## Assistant V1 [api](https://cloud.ibm.com/apidocs/assistant/assistant-v1)
@@ -213,8 +215,41 @@ https://cloud.ibm.com/login
 
 
 
-https://github.com/IBM-Cloud/watson-conversation-variables
+https://youtu.be/h-u-5f8fZtc
+
+
+
+[WA-Docs](ibm.biz/wcsdocs)
+
+[WA-Intents](ibm.biz/wcsintents)
+
+
+
+[WA-Entities](ibm.biz/wcsentities)
+
+
+
+[WA-Dialog](ibm.biz/wcsdialog)
+
+
+
+[WA-Apps](ibm.biz/wcsapps)
+
+
+
+[Samples using context variables and (system) entities in IBM Watson Assistant (formerly Conversation) service on IBM Cloud](https://github.com/IBM-Cloud/watson-conversation-variables)
+
+[https://github.com/IBM-Cloud/watson-conversation-variables](https://cloud.ibm.com/docs/services/assistant?topic=assistant-dialog-webhooks)
+
+
 
 
 
 https://ibm.ent.box.com/v/LVWAssistant
+
+
+
+https://docs.oracle.com/javase/7/docs/api/
+
+
+

@@ -1,5 +1,9 @@
 {
 "input":{
-"text": "Je veux un rendez-vous."
+"text": "je veux reserver une table pour demain midi pour 4 personnes.",
+        "options":{
+            "debug": true,
+            "return_context": true
+        }
 }
 }

@@ -93,3 +93,6 @@ SKILL="skill1"
 WORKSPACE_ID=$(curl -u 'apikey:'$API_KEY $URL/v1/workspaces?version=2019-02-28 | jq -r '.workspaces[] | select(.name=="'$SKILL'") | .workspace_id')
 
 curl -X POST -u 'apikey:'$API_KEY -H 'Content-Type:application/json' -d '{"input": {"text": "Je veux prendre rendez-vous"}}' $URL/v1/workspaces/$WORKSPACE_ID/message?version=$VERSION
+
+
+Nous recevons les <? $horaires.DATAS.joinToArray("%e.jour%").join(' et ') ?>. <? context.horaires.DATAS ?>

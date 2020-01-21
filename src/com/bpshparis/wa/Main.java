@@ -16,6 +16,7 @@ import java.util.Properties;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 
+import org.springframework.expression.EvaluationContext;
 import org.springframework.expression.Expression;
 import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
@@ -26,17 +27,43 @@ public class Main {
 
 	public static void main(String args[]) throws IOException{
 		
-		f5();
+		f6();
 
 	}
 
-	public static void f6(){
+	public static void f6() throws IOException {
 
 		ExpressionParser parser = new SpelExpressionParser();
 
-		Expression exp = parser.parseExpression("'Hello World'");
+		Expression exp = parser.parseExpression("'Hello World'.concat('!')");
 		String message = (String) exp.getValue();
 		System.out.println(message);//An integer literal
+
+		boolean falseValue = parser.parseExpression(
+		"123 instanceof T(Integer)").getValue(Boolean.class);
+		System.out.println(falseValue);
+
+		List<Horaire> horaires = new ArrayList<Horaire>();
+
+		Horaire mardi = new Horaire();
+		mardi.setJour("mardi");
+		mardi.setHeures(Arrays.asList("10h", "11h", "14h", "15h"));
+		Horaire mercredi = new Horaire();
+		mercredi.setJour("mercredi");
+		mercredi.setHeures(Arrays.asList("12", "14", "16"));
+		Horaire jeudi = new Horaire();
+		jeudi.setJour("jeudi");
+		jeudi.setHeures(Arrays.asList("14h", "15h"));
+
+		horaires.add(mardi);
+		horaires.add(mercredi);
+		horaires.add(jeudi);
+
+		String json = Tools.toJSON(horaires);
+
+		System.out.println(json);
+
+		
 
 	}
 	
@@ -48,12 +75,16 @@ public class Main {
 
 		Horaire mardi = new Horaire();
 		mardi.setJour("mardi");
-		mardi.setHeures(Arrays.asList("10h", "11h"));
+		mardi.setHeures(Arrays.asList("10h", "11h", "14h", "15h"));
+		Horaire mercredi = new Horaire();
+		mercredi.setJour("mercredi");
+		mercredi.setHeures(Arrays.asList("12", "14", "16"));
 		Horaire jeudi = new Horaire();
 		jeudi.setJour("jeudi");
 		jeudi.setHeures(Arrays.asList("14h", "15h"));
 
 		horaires.add(mardi);
+		horaires.add(mercredi);
 		horaires.add(jeudi);
 
 		Files.write(output, Tools.toJSON(horaires).getBytes());
