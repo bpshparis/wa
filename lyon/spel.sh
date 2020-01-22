@@ -24,6 +24,9 @@ All of <? entities.size() ?> entities: <? entities ?>. They include "sys-locatio
 
 context.jours.contains('mardi')? context.jour='mardi': null
 
+entities['sys-date'] && entities['sys-date'].size()==2 ? context.depart=entities['sys-date'][0].value: null
+
+
 {
   "context":{
     "jours": ["mardi", "jeudi"],

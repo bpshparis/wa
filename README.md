@@ -252,7 +252,10 @@ Seoul: https://api.kr-seo.assistant.watson.cloud.ibm.com
 
 
 
-
+Check for = entities['sys-date'] && entities['sys-date'].size()==2 ? context.depart=entities['sys-date'][0].value: null
+Save as $depart
+Check for = entities['sys-date'] && entities['sys-date'].size()==2 ? context.arrivee=entities['sys-date'][1].value: null
+Save as $arrivee
 
 
 
