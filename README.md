@@ -103,9 +103,11 @@ stwlp
 
 ## Assistant
 
+https://ibm.ent.box.com/v/LVWAssistant
+
 https://github.com/bpshparis/wa
 
-
+http://ibm.biz/calendriereag
 
 https://cloud.ibm.com/login
 
@@ -141,7 +143,7 @@ https://youtu.be/h-u-5f8fZtc
 
 
 
-https://ibm.ent.box.com/v/LVWAssistant
+
 
 
 
@@ -201,6 +203,8 @@ Seoul: https://api.kr-seo.assistant.watson.cloud.ibm.com
 	curl -k -u 'apikey:'$API_KEY -X POST -H 'Content-Type:application/json' -d @$FILE $URL/v1/workspaces/$SKILL_ID/message?version=$VERSION | jq .
 
 ## Assistant V2 [api](https://cloud.ibm.com/apidocs/assistant/assistant-v2)
+
+:warning: Install [jq](https://stedolan.github.io/jq/download/) for your platform.
 
 ### Set the ASSISTANT_ID
 
