@@ -103,6 +103,49 @@ stwlp
 
 ## Assistant
 
+https://github.com/bpshparis/wa
+
+
+
+https://cloud.ibm.com/login
+
+
+
+https://youtu.be/h-u-5f8fZtc
+
+
+
+[WA-Docs](ibm.biz/wcsdocs)
+
+[WA-Intents](ibm.biz/wcsintents)
+
+
+
+[WA-Entities](ibm.biz/wcsentities)
+
+
+
+[WA-Dialog](ibm.biz/wcsdialog)
+
+
+
+[WA-Apps](ibm.biz/wcsapps)
+
+
+
+[Samples using context variables and (system) entities in IBM Watson Assistant (formerly Conversation) service on IBM Cloud](https://github.com/IBM-Cloud/watson-conversation-variables)
+
+[https://github.com/IBM-Cloud/watson-conversation-variables](https://cloud.ibm.com/docs/services/assistant?topic=assistant-dialog-webhooks)
+
+
+
+
+
+https://ibm.ent.box.com/v/LVWAssistant
+
+
+
+
 ### Service endpoints by location:
 
 Dallas: https://api.us-south.assistant.watson.cloud.ibm.com
@@ -207,45 +250,6 @@ Seoul: https://api.kr-seo.assistant.watson.cloud.ibm.com
 
 
 
-https://github.com/bpshparis/bt
-
-
-
-https://cloud.ibm.com/login
-
-
-
-https://youtu.be/h-u-5f8fZtc
-
-
-
-[WA-Docs](ibm.biz/wcsdocs)
-
-[WA-Intents](ibm.biz/wcsintents)
-
-
-
-[WA-Entities](ibm.biz/wcsentities)
-
-
-
-[WA-Dialog](ibm.biz/wcsdialog)
-
-
-
-[WA-Apps](ibm.biz/wcsapps)
-
-
-
-[Samples using context variables and (system) entities in IBM Watson Assistant (formerly Conversation) service on IBM Cloud](https://github.com/IBM-Cloud/watson-conversation-variables)
-
-[https://github.com/IBM-Cloud/watson-conversation-variables](https://cloud.ibm.com/docs/services/assistant?topic=assistant-dialog-webhooks)
-
-
-
-
-
-https://ibm.ent.box.com/v/LVWAssistant
 
 
 
