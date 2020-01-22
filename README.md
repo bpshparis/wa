@@ -142,7 +142,9 @@ https://youtu.be/h-u-5f8fZtc
 
 [webhook](https://cloud.ibm.com/docs/services/assistant?topic=assistant-dialog-webhooks)
 
+[ngrock](https://ngrok.com/download)
 
+[Voice Agent](https://cloud.ibm.com/catalog/services/voice-agent-with-watson)
 
 
 
