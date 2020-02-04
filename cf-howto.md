@@ -70,6 +70,8 @@ curl -X POST -H 'Content-Type: application/json' -u $APIKEY -d @params.json $URL
 
 #### Générer un object credential dans un object private
 
+>:bulb: Les objects placer dans l'object **private** lui même placé dans l'object context sont **invisibles** dans les logs.
+
 ```
 APIKEY="userid:password"
 USER=$(echo $APIKEY | awk -F ':' '{print $1}')
