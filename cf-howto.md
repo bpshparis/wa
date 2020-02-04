@@ -1,3 +1,13 @@
+### Créer une cloud function de type action
+
+Démarrer  [ici](https://cloud.ibm.com/functions/actions)
+
+#### Verifier la région
+
+>:warning: Selectionner la même région (e.g. eu-de) que celle de Watson Assistant.
+
+![](img/10.jpg)
+
 #### Créer l'action
 
 ![](img/11.jpg)
@@ -6,18 +16,18 @@
 
 ![](img/13.jpg)
 
-![](app/img/14.jpg)
+![](img/14.jpg)
 
 #### Coller ou écrire le code dans l'éditeur
 
-![](app/img/15.jpg)
+![](img/15.jpg)
 
 
 #### Récupérer l'URL de l'action
 
-![](app/img/16.jpg)
+![](img/16.jpg)
 
-![](app/img/17.jpg)
+![](img/17.jpg)
 
 
 
@@ -25,7 +35,7 @@
 
 Naviguer jusqu'[ici](https://cloud.ibm.com/functions/namespace-settings)
 
-![](app/img/18.jpg)
+![](img/18.jpg)
 
 
 #### Tester l'action avec curl ou postman
@@ -84,7 +94,7 @@ jq . credential.json
 
 >:warning: Placer le credential dans un noeud au dessus du noeud d'appel de l'action
 
-![](app/img/0.jpg)
+![](img/0.jpg)
 
 
 #### Générer un object action de type tableau 
@@ -120,4 +130,4 @@ jq . actionCall.json
 >:warning: Placer l'appel de l'action dans un noeud au dessous du noeud du credential.
 
 
-![](app/img/1.jpg)
+![](img/1.jpg)
