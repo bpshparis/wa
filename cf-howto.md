@@ -71,7 +71,7 @@ curl -X POST -H 'Content-Type: application/json' -u $APIKEY -d @params.json $URL
 #### Générer un object credential dans un object private
 
 ```
-APIKEY="123456:abcdef"
+APIKEY="userid:password"
 USER=$(echo $APIKEY | awk -F ':' '{print $1}')
 PASSWORD=$(echo $APIKEY | awk -F ':' '{print $2}')
 
