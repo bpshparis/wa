@@ -127,7 +127,7 @@ EOF
 jq . actionCall.json
 ```
 
-#### Coller le fichier généré dans un noeud au dessus du noeud d'appel de l'action à l'aide de l'éditeur JSON
+#### Coller le fichier généré dans un noeud au dessous du noeud du credentiel à l'aide de l'éditeur JSON
 
 >:warning: Placer l'appel de l'action dans un noeud au dessous du noeud du credential.
 
